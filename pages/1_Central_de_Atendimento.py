@@ -135,7 +135,15 @@ if os.path.exists(file_path):
                 title="Quantidade por Unidade", 
                 color='Unidade'
             )
-            fig1.update_layout(xaxis_title="Unidade", yaxis_title="Quantidade")
+            fig1.update_layout(
+                xaxis_title="Unidade", 
+                yaxis_title="Quantidade",
+                yaxis=dict(separatethousands=True)
+            )
+            # Formatação dos valores no hover
+            fig1.update_traces(
+                hovertemplate='<b>%{x}</b><br>Quantidade: %{y:,.0f}'.replace(',', '.')
+            )
             st.plotly_chart(fig1, use_container_width=True)
         
         # 2. Gráfico de barras: Receita por Unidade
@@ -148,7 +156,15 @@ if os.path.exists(file_path):
                 title="Receita por Unidade", 
                 color='Unidade'
             )
-            fig2.update_layout(xaxis_title="Unidade", yaxis_title="Receita (R$)")
+            fig2.update_layout(
+                xaxis_title="Unidade", 
+                yaxis_title="Receita (R$)",
+                yaxis=dict(separatethousands=True, tickformat=",.2f", tickprefix="R$ ")
+            )
+            # Formatação dos valores no hover
+            fig2.update_traces(
+                hovertemplate='<b>%{x}</b><br>Receita: R$ %{y:,.2f}'.replace(',', 'X').replace('.', ',').replace('X', '.')
+            )
             st.plotly_chart(fig2, use_container_width=True)
         
         # 3. Gráfico de pizza: Distribuição por Categoria
@@ -160,6 +176,11 @@ if os.path.exists(file_path):
                 names='Categoria', 
                 title="Distribuição por Categoria"
             )
+            # Formatação dos valores no hover
+            fig3.update_traces(
+                textinfo='percent+label',
+                hovertemplate='<b>%{label}</b><br>Quantidade: %{value:,.0f}<br>Percentual: %{percent:.2%}'.replace(',', '.').replace('.2%', ',2%')
+            )
             st.plotly_chart(fig3, use_container_width=True)
         
         # 4. Gráfico de pizza: Distribuição por Tipo de Atendimento
@@ -170,6 +191,11 @@ if os.path.exists(file_path):
                 values='Quantidade', 
                 names='TipoAtendimento', 
                 title="Distribuição por Tipo de Atendimento"
+            )
+            # Formatação dos valores no hover
+            fig4.update_traces(
+                textinfo='percent+label',
+                hovertemplate='<b>%{label}</b><br>Quantidade: %{value:,.0f}<br>Percentual: %{percent:.2%}'.replace(',', '.').replace('.2%', ',2%')
             )
             st.plotly_chart(fig4, use_container_width=True)
         
@@ -187,7 +213,12 @@ if os.path.exists(file_path):
         fig5.update_layout(
             yaxis={'categoryorder':'total ascending'},
             xaxis_title="Quantidade",
-            yaxis_title="Serviço"
+            yaxis_title="Serviço",
+            xaxis=dict(separatethousands=True)
+        )
+        # Formatação dos valores no hover
+        fig5.update_traces(
+            hovertemplate='<b>%{y}</b><br>Quantidade: %{x:,.0f}'.replace(',', '.')
         )
         st.plotly_chart(fig5, use_container_width=True)
         
@@ -205,7 +236,12 @@ if os.path.exists(file_path):
         fig5_1.update_layout(
             yaxis={'categoryorder':'total ascending'},
             xaxis_title="Receita (R$)",
-            yaxis_title="Serviço"
+            yaxis_title="Serviço",
+            xaxis=dict(separatethousands=True, tickformat=",.2f", tickprefix="R$ ")
+        )
+        # Formatação dos valores no hover
+        fig5_1.update_traces(
+            hovertemplate='<b>%{y}</b><br>Receita: R$ %{x:,.2f}'.replace(',', 'X').replace('.', ',').replace('X', '.')
         )
         st.plotly_chart(fig5_1, use_container_width=True)
         
@@ -220,7 +256,12 @@ if os.path.exists(file_path):
         )
         fig6.update_layout(
             xaxis_title="Dia do Mês",
-            yaxis_title="Quantidade"
+            yaxis_title="Quantidade",
+            yaxis=dict(separatethousands=True)
+        )
+        # Formatação dos valores no hover
+        fig6.update_traces(
+            hovertemplate='<b>Dia %{x}</b><br>Quantidade: %{y:,.0f}'.replace(',', '.')
         )
         st.plotly_chart(fig6, use_container_width=True)
         

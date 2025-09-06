@@ -187,7 +187,12 @@ if os.path.exists(file_path):
         fig5.update_layout(
             yaxis={'categoryorder':'total ascending'},
             xaxis_title="Quantidade",
-            yaxis_title="Serviço"
+            yaxis_title="Serviço",
+            xaxis=dict(separatethousands=True)
+        )
+        # Formatação dos valores no hover
+        fig5.update_traces(
+            hovertemplate='<b>%{y}</b><br>Quantidade: %{x:,.0f}'.replace(',', '.')
         )
         st.plotly_chart(fig5, use_container_width=True)
         
@@ -205,7 +210,12 @@ if os.path.exists(file_path):
         fig5_1.update_layout(
             yaxis={'categoryorder':'total ascending'},
             xaxis_title="Receita (R$)",
-            yaxis_title="Serviço"
+            yaxis_title="Serviço",
+            xaxis=dict(separatethousands=True, tickformat=",.2f", tickprefix="R$ ")
+        )
+        # Formatação dos valores no hover
+        fig5_1.update_traces(
+            hovertemplate='<b>%{y}</b><br>Receita: R$ %{x:,.2f}'.replace(',', 'X').replace('.', ',').replace('X', '.')
         )
         st.plotly_chart(fig5_1, use_container_width=True)
         
@@ -220,7 +230,12 @@ if os.path.exists(file_path):
         )
         fig6.update_layout(
             xaxis_title="Dia do Mês",
-            yaxis_title="Quantidade"
+            yaxis_title="Quantidade",
+            yaxis=dict(separatethousands=True)
+        )
+        # Formatação dos valores no hover
+        fig6.update_traces(
+            hovertemplate='<b>Dia %{x}</b><br>Quantidade: %{y:,.0f}'.replace(',', '.')
         )
         st.plotly_chart(fig6, use_container_width=True)
         

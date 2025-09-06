@@ -260,7 +260,7 @@ if os.path.exists(file_path):
                 yaxis_title="Receita (R$)",
                 yaxis=dict(separatethousands=True, tickformat=",.2f", tickprefix="R$ ")
             )
-            # Formatação dos valores no hover
+            # Formatação dos valores no hover para o padrão brasileiro
             fig2.update_traces(
                 hovertemplate='<b>%{x}</b><br>Receita: R$ %{y:,.2f}'.replace(',', 'X').replace('.', ',').replace('X', '.')
             )
@@ -275,7 +275,7 @@ if os.path.exists(file_path):
                 names='Categoria', 
                 title="Distribuição por Categoria"
             )
-            # Formatação dos valores no hover
+            # Formatação dos valores no hover para o padrão brasileiro
             fig3.update_traces(
                 textinfo='percent+label',
                 hovertemplate='<b>%{label}</b><br>Quantidade: %{value:,.0f}<br>Percentual: %{percent:.2%}'.replace(',', '.').replace('.2%', ',2%')
@@ -291,7 +291,7 @@ if os.path.exists(file_path):
                 names='TipoAtendimento', 
                 title="Distribuição por Tipo de Atendimento"
             )
-            # Formatação dos valores no hover
+            # Formatação dos valores no hover para o padrão brasileiro
             fig4.update_traces(
                 textinfo='percent+label',
                 hovertemplate='<b>%{label}</b><br>Quantidade: %{value:,.0f}<br>Percentual: %{percent:.2%}'.replace(',', '.').replace('.2%', ',2%')
@@ -315,7 +315,7 @@ if os.path.exists(file_path):
             yaxis_title="Serviço",
             xaxis=dict(separatethousands=True)
         )
-        # Formatação dos valores no hover
+        # Formatação dos valores no hover para o padrão brasileiro
         fig5.update_traces(
             hovertemplate='<b>%{y}</b><br>Quantidade: %{x:,.0f}'.replace(',', '.')
         )
@@ -338,7 +338,7 @@ if os.path.exists(file_path):
             yaxis_title="Serviço",
             xaxis=dict(separatethousands=True, tickformat=",.2f", tickprefix="R$ ")
         )
-        # Formatação dos valores no hover
+        # Formatação dos valores no hover para o padrão brasileiro de moeda
         fig5_1.update_traces(
             hovertemplate='<b>%{y}</b><br>Receita: R$ %{x:,.2f}'.replace(',', 'X').replace('.', ',').replace('X', '.')
         )
@@ -358,7 +358,7 @@ if os.path.exists(file_path):
             yaxis_title="Quantidade",
             yaxis=dict(separatethousands=True)
         )
-        # Formatação dos valores no hover
+        # Formatação dos valores no hover para o padrão brasileiro
         fig6.update_traces(
             hovertemplate='<b>Dia %{x}</b><br>Quantidade: %{y:,.0f}'.replace(',', '.')
         )
